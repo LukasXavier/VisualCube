@@ -1,3 +1,5 @@
+# COMMENT:
+
 from ..visualCubeLib import *
 from .ABCPuzzle import ABCCubeNxN
 
