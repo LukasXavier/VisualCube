@@ -1,0 +1,34 @@
+{
+    /*
+    I use these todo highlight tags throughout my code
+
+    Name: TODO Highlight v2
+    Id: jgclark.vscode-todo-highlight
+    Description: highlight TODOs, FIXMEs, and any keywords, annotations...
+    Version: 2.0.4
+    Publisher: Jonathan Clark
+    VS Marketplace Link: https://marketplace.visualstudio.com/items?itemName=jgclark.vscode-todo-highlight
+    */
+
+    "todohighlight": {
+        "isEnable": true,
+        "isCaseSensitive": true,
+        "include": [ "**/*.py", "**/*.c", "**/*.cpp", "**/*.cs", "**/*.rs", "**/*.ahk", "**/*.js",
+            "**/*.jsx", "**/*.ts", "**/*.tsx", "**/*.html", "**/*.css", "**/*.rb", "**/*.txt", ],
+        "defaultStyle": { "color": "White", "IsWholeLine": false, "backgroundColor": "rgba(0,0,0,0)" },
+        "keywords": [
+            { "text": "TEST:", "backgroundColor": "#ff6900" },
+            { "text": "DEBUG:", "backgroundColor": "#aa5099" },
+            { "text": "MAYBE:", "backgroundColor": "indigo" },
+            { "text": "DONE:", "backgroundColor": "darkgreen" },
+            { "text": "NOTES:", "backgroundColor": "forestgreen" },
+            { "text": "NOTE:", "backgroundColor": "forestgreen" },
+            { "text": "WIP:", "backgroundColor": "#077" },
+            { "text": "FIX:", "color": "#ccc", "border": "2px solid #077" },
+            { "text": "CLEANUP:", "backgroundColor": "#19f" },
+            { "text": "REFAC:", "color": "#19f", "border": "2px solid #19f" },
+            { "text": "COMMENT:", "backgroundColor": "#55DDEE" },
+            { "text": "WARNING:", "color": "red", "border": "2px solid red" },
+        ]
+    },
+}

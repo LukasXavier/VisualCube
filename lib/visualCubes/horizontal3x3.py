@@ -14,11 +14,9 @@ class _3x3(ABCCubeNxN):
         move(str): updates the internal model based on a WCA notation string
         rotate(str): WIP: unimplemented
     '''
-    cube_size = 3
-    size = (160 - (5 * (cube_size-1)))/cube_size
 
     def __init__(self) -> None:
-        self.faces = [[color for _ in range(3*3)] for color in NxN.COLORS]
+        super().__init__(3)
 
     def move(self, notation: str) -> None:
         '''
@@ -29,11 +27,12 @@ class _3x3(ABCCubeNxN):
             if (notation[1] == '2'):
                 self.move(notation[0])
                 self.move(notation[0])
+                return
             elif (len(notation) == 3 and notation[2] == '2'):
                 self.move(notation[0])
                 self.move(notation[0])
-                # WIP: need to implement middle slices to do handle Xw moves
-            return
+                return
+            # WIP: need to implement middle slices to do handle Xw moves
 
         # handles F, F'
         if ("F" in notation):

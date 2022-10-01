@@ -13,9 +13,11 @@
 from lib.graphics import Gui
 from lib.visualCubeLib import *
 from lib.visualCubes.horizontal7x7 import _7x7
+from lib.visualCubes.horizontal3x3 import _3x3
+from lib.visualCubes.horizontal4x4 import _4x4
 
 def main():
-    gui, cube = Gui((800, 600)), _7x7()
+    gui, cube = Gui((800, 600)), _4x4()
     cube.draw(gui)
     
     # cube.apply_alg(s_list=scramble(cube))

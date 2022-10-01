@@ -12,5 +12,5 @@ def attempt(*,info: str, left: list[list[int]], right: list[list[int]]) -> None:
     try:
         assert (left == right)
     except (AssertionError):
-        print(f"\033[31mTest: {info} [failed]\n\033[mLeft:  {left}\nRight: {right}")
+        print(f"\033[31mTest: {info} [failed]\n\033[mLeft:  {left}\nRight: {right}\033[m")
         exit(1)

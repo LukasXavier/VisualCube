@@ -6,6 +6,7 @@
     WIP: currently only implements a NxN puzzle
 '''
 
+from typing import Callable
 from ..graphics import Gui
 from ..visualCubeLib import *
 from abc import ABCMeta, abstractmethod
@@ -15,6 +16,11 @@ class ABCCubeNxN(metaclass=ABCMeta):
     '''
         the base class for NxN cubes to extend from
     '''
+
+    def __init__(self, size: int) -> None:
+        self.cube_size = size
+        self.size = (160 - (5 * (size - 1))) / size
+        self.faces = [[color for _ in range(size * size)] for color in NxN.COLORS]
 
     @abstractmethod
     def move(self, notation: str) -> None: ...
@@ -89,3 +95,30 @@ class ABCCubeNxN(metaclass=ABCMeta):
         from ..visualCubeLib import NxN
         self._swap_four(color, t=NxN.face_edge(self.cube_size, prime=counter))
         self._swap_four(color, t=NxN.face_corner(self.cube_size, prime=counter))
+
+    @staticmethod
+    # TODO: look at last character for a '2'.
+    # TODO: look at last character for a 'w'.
+    # TODO: look at first character for int.
+    # NOTE: https://ruwix.com/the-rubiks-cube/notation/advanced/
+    def _notation_filter(notation: str, move: Callable[[str], None]) -> bool:
+        if (len(notation) == 2 and notation[1] != "'"):    # for cases like 'Rw', 'R2', 'r2'
+            if (notation[1] == '2'):    # specifically for 'R2'/'r2' cases
+                move(notation[0])
+                move(notation[0])
+                return True
+            elif (notation[1] == 'w'):   # for cases like Rw, we recurse on 'r' and 'R'
+                move(notation[0].lower())
+                move(notation[0])
+                return True
+        if (len(notation) == 3): # handles 'Rw2', "Rw'"
+            if (notation[2] == '2'):
+                move(notation[:2])
+                move(notation[:2])
+                return True
+            elif (notation[2] == "'"):   # handles the "Rw'" case by recursing on "r'" and "R'"
+                move(f"{notation[0].lower()}'")
+                move(f"{notation[0]}'")
+                return True
+        return False
+        

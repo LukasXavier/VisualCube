@@ -4,31 +4,12 @@ from ..visualCubeLib import *
 from .ABCPuzzle import ABCCubeNxN
 
 class _4x4(ABCCubeNxN):
-    cube_size = 4
-    size = (160 - (5 * (cube_size-1)))/cube_size
 
     def __init__(self):
-        self.faces = [[color for _ in range(4*4)] for color in NxN.COLORS]
+        super().__init__(4)
 
     def move(self, notation: str) -> None:
-        if (len(notation) == 2 and notation[1] != "'"):    # for cases like 'Rw', 'R2', 'r2'
-            if (notation[1] == '2'):    # specifically for 'R2'/'r2' cases
-                self.move(notation[0])
-                self.move(notation[0])
-                return
-            elif (notation[1] == 'w'):   # for cases like Rw, we recurse on 'r' and 'R'
-                self.move(notation[0].lower())
-                self.move(notation[0])
-                return
-        if (len(notation) == 3): # handles 'Rw2', "Rw'"
-            if (notation[2] == '2'):
-                self.move(notation[:2])
-                self.move(notation[:2])
-                return
-            elif (notation[2] == "'"):   # handles the "Rw'" case by recursing on "r'" and "R'"
-                self.move(f"{notation[0].lower()}'")
-                self.move(f"{notation[0]}'")
-                return
+        if self._notation_filter(notation, self.move): return
         if (notation in ['R', "R'", "r'", "r", "l'", "l", "L", "L'"]):
             swap = "R" if (notation in ["R", "r", "l'", "L'"]) else "R'"
             face = RIGHT if ("R" in notation) else LEFT if ("L" in notation) else None
@@ -64,3 +45,6 @@ class _4x4(ABCCubeNxN):
             self._face_rotate(face, counter="'" in notation)
 
     def rotate(self, direction: str) -> None: ...
+
+    def test(self):
+        print(type(self.move))
