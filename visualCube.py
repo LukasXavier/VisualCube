@@ -17,13 +17,14 @@ from lib.visualCubes.horizontal3x3 import _3x3
 from lib.visualCubes.horizontal4x4 import _4x4
 
 def main():
-    gui, cube = Gui((800, 600)), _4x4()
+    gui, cube = Gui((800, 600)), _3x3()
     cube.draw(gui)
     
     # cube.apply_alg(s_list=scramble(cube))
     
     # cube.apply_alg(str_=Algs.T_PERM)
     
+    # cube.apply_alg(str_=Algs.CUBE_IN_CUBE)
     # cube.apply_alg(str_=Algs.CUBE_IN_CUBE)
     # cube.apply_alg(str_=Algs.BIG_2X2_CUBE_IN_CUBE)
 

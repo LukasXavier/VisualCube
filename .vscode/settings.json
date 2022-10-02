@@ -17,6 +17,7 @@
             "**/*.jsx", "**/*.ts", "**/*.tsx", "**/*.html", "**/*.css", "**/*.rb", "**/*.txt", ],
         "defaultStyle": { "color": "White", "IsWholeLine": false, "backgroundColor": "rgba(0,0,0,0)" },
         "keywords": [
+            { "text": "IMPL:", "backgroundColor": "#e6ac00" },
             { "text": "TEST:", "backgroundColor": "#ff6900" },
             { "text": "DEBUG:", "backgroundColor": "#aa5099" },
             { "text": "MAYBE:", "backgroundColor": "indigo" },

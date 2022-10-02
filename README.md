@@ -13,6 +13,7 @@ solved state
      alt="a solved 3x3 unfolded">
 
 a t-perm applied with white on top and green as the front
+
 <img src = "docs/images/3x3_tperm.png"
      alt="a 3x3 with a t-perm applied">
 
@@ -20,6 +21,14 @@ a t-perm applied with white on top and green as the front
 <img src="docs/images/7x7_solved.png"
      alt="a solved 7x7 unfolded">
 
+# getting started
+install the latest version of python3.
+
+run `pip install -r requirements.txt` while in the git repo.
+
+The entry point is `visualCube.py`*.
+
+*This app currently takes input from the user through stdin.
 # extra
 I've included a small vscode settings file containing some todo highlighting
 rules that I personally use. They may appear through my source code so I thought
